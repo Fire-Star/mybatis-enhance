@@ -13,6 +13,17 @@ Maven依赖：
     <version>1.5.1.RELEASE</version>
 </dependency>
 ```
+
+如果maven下载不了仓库，就开tun代理，并配置repository：
+```
+<repositories>
+	<repository>
+		<id>central-repos</id>
+		<name>Central Repository</name>
+		<url>https://oss.sonatype.org/content/repositories/releases</url>
+	</repository>
+</repositories>
+```
 下面是原作者的官方地址：
 
 # mybatis-enhance-actable-1.5.0.RELEASE
