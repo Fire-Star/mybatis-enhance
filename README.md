@@ -14,7 +14,7 @@ Maven依赖：
 </dependency>
 ```
 
-如果maven下载不了仓库，就开tun代理，并配置repository：
+如果maven下载不了依赖，就开tun代理，并配置repository：
 ```
 <repositories>
 	<repository>
