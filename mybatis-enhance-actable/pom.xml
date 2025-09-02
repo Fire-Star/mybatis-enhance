@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.gitee.firelang.mybatis.actable</groupId>
+    <groupId>io.github.fire-star.mybatis.actable</groupId>
     <artifactId>mybatis-enhance-actable</artifactId>
     <version>1.5.1.RELEASE</version>
 
@@ -12,10 +12,10 @@
         <version>7</version>
     </parent>
 
-    <name>com.gitee.sunchenbin.mybatis.actable:mybatis-enhance-actable</name>
+    <name>io.github.fire-star.mybatis.actable:mybatis-enhance-actable</name>
     <description>A.CTable is a Maven project based on Spring and Mybatis, which enhances the function of Mybatis
     </description>
-    <url>https://gitee.com/sunchenbin/mybatis-enhance</url>
+    <url>https://github.com/Fire-Star/mybatis-enhance</url>
 
     <licenses>
         <license>
@@ -27,17 +27,21 @@
 
     <developers>
         <developer>
-            <name>sunchenbin</name>
-            <email>458757617@qq.com</email>
-            <organization>sunchenbin</organization>
-            <url>https://gitee.com/sunchenbin/mybatis-enhance</url>
+            <!--对应你maven配置中的server id-->
+            <id>ossrh</id>
+            <name>io.github.fire-star</name>
+            <email>1428384239@qq.com</email>
+            <roles>
+                <role>Project Manager</role>
+                <role>Developer</role>
+            </roles>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git@gitee.com:sunchenbin/mybatis-enhance.git</connection>
-        <developerConnection>scm:git:git@gitee.com:sunchenbin/mybatis-enhance.git</developerConnection>
-        <url>https://gitee.com/sunchenbin/mybatis-enhance</url>
+        <connection>https://github.com/Fire-Star/mybatis-enhance.git</connection>
+        <developerConnection>scm:git:git@github.com:Fire-Star/mybatis-enhance.git</developerConnection>
+        <url>https://github.com/Fire-Star/mybatis-enhance</url>
         <tag>1.0</tag>
     </scm>
 
@@ -115,6 +119,17 @@
             </resource>
         </resources>
         <plugins>
+            <!--   central发布插件    -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>ossrh</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                </configuration>
+            </plugin>
             <plugin>
                 <!-- Source -->
                 <groupId>org.apache.maven.plugins</groupId>
@@ -152,20 +167,26 @@
             </plugin>
 
             <!-- GPG -->
-            <!-- <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-gpg-plugin</artifactId>
-              <version>1.5</version>
-              <executions>
-                <execution>
-                  <id>sign-artifacts</id>
-                  <phase>verify</phase>
-                  <goals>
-                    <goal>sign</goal>
-                  </goals>
-                </execution>
-              </executions>
-            </plugin> -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <configuration>
+                    <!--指定 GPG 执行程序的路径-->
+                    <executable>C:\Program Files (x86)\GnuPG\bin\gpg.exe</executable>
+                    <!--指定用于签名的 GPG 密钥名称。-->
+                    <keyname>io.github.fire-star</keyname>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -633,7 +633,38 @@ public class SysMysqlCreateTableManagerImpl implements SysMysqlCreateTableManage
 				fieldList.add(param);
 			}
 		}
+		
+		// 将id字段移动到最前面
+		sortFieldsWithIdFirst(fieldList);
+		
 		return fieldList;
+	}
+
+	/**
+	 * 将fieldName为"id"的元素移动到数组最前面
+	 * @param fieldList 字段列表
+	 */
+	private void sortFieldsWithIdFirst(List<Object> fieldList) {
+		List<Object> idFields = new ArrayList<Object>();
+		List<Object> otherFields = new ArrayList<Object>();
+		
+		for (Object field : fieldList) {
+			if (field instanceof CreateTableParam) {
+				CreateTableParam param = (CreateTableParam) field;
+				if ("id".equals(param.getFieldName())) {
+					idFields.add(field);
+				} else {
+					otherFields.add(field);
+				}
+			} else {
+				otherFields.add(field);
+			}
+		}
+		
+		// 重新构建fieldList，id字段在前
+		fieldList.clear();
+		fieldList.addAll(idFields);
+		fieldList.addAll(otherFields);
 	}
 
 	/**
