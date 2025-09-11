@@ -277,10 +277,10 @@
 				ON `${tableName}` (
 				<foreach collection="fields.filedIndexValue" index="index" item="columnName">
 					<if test="fields.filedIndexValue.size == 1">
-						${columnName}
+						`${columnName}`
 					</if>
 					<if test="fields.filedIndexValue.size > 1">
-						${columnName}
+						`${columnName}`
 						<if test="fields.filedIndexValue.size != index + 1">
 						,
 						</if>
@@ -299,10 +299,10 @@
 				ON `${tableName}` (
 				<foreach collection="fields.filedUniqueValue" index="index" item="columnName">
 					<if test="fields.filedUniqueValue.size == 1">
-						${columnName}
+						`${columnName}`
 					</if>
 					<if test="fields.filedUniqueValue.size > 1">
-						${columnName}
+						`${columnName}`
 						<if test="fields.filedUniqueValue.size != index + 1">
 						,
 						</if>
