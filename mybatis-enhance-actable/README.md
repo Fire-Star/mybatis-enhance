@@ -4,13 +4,18 @@
 1. 新增实体类支持枚举类型，需要搭配Mybatis-Plus的@EnumValue注解使用。<br/>
 2. 建表时，强制把字段名为id字段的移动到表字段的最前面。<br/>
 
+1.5.2.RELEASE
+feat: 增加在建表约束的时候将字段名用``包围
+
+
+
 Maven依赖：
 
 ```xml
 <dependency>
     <groupId>io.github.fire-star.mybatis.actable</groupId>
     <artifactId>mybatis-enhance-actable</artifactId>
-    <version>1.5.1.RELEASE</version>
+    <version>1.5.2.RELEASE</version>
 </dependency>
 ```
 下面是原作者的官方地址：
